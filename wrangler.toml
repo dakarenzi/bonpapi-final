@@ -1,11 +1,4 @@
-name = "bonpapi-final"
-compatibility_date = "2024-10-10"
+compatibility_date = "2024-04-03"
 
-# For Cloudflare Pages output
+[pages]
 pages_build_output_dir = "./dist"
-
-# Astro Cloudflare adapter runtime
-workers_dev = false
-
-[vars]
-NODE_VERSION = "18"
