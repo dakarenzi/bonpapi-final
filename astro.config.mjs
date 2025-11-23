@@ -1,22 +1,18 @@
-import { defineConfig } from 'astro/config';
-import cloudflare from "@astrojs/cloudflare";
+import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
+// IMPORTANT: Cloudflare Pages must use static output
 export default defineConfig({
-  output: "server",
-  adapter: cloudflare(),
+  site: "https://bonpapi-final.pages.dev",
+  output: "static",
 
-  site: "https://agence.bonpapi.com",
-
-  integrations: [sitemap()],
+  integrations: [
+    sitemap()
+  ],
 
   vite: {
-    css: {
-      preprocessorOptions: {
-        css: {
-          charset: false
-        }
-      }
-    }
+    ssr: {
+      noExternal: [/./], // keep safe; optional
+    },
   }
 });
