@@ -1,16 +1,20 @@
 ---
-import SEO from "../components/SEO.astro";
+import SEO from "@components/SEO.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
 
-const props = Astro.props || {};
+// Accept all props safely with defaults
 const {
   title = "Agence BonPapi — Agence Digitale Premium",
-  description = "Web, Branding, IA et Automatisation — BonPapi",
-  image = "/images/og-default.jpg",
-} = props;
+  description = "Web, branding, IA, automatisation & solutions Cloudflare.",
+  image = "/images/placeholder.jpg",
+} = Astro.props;
 ---
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <!-- Universal SEO Component -->
     <SEO
       title={title}
       description={description}
@@ -21,17 +25,11 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Fallback HTML tags (SEO already inserts main tags, this is extra safety) -->
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:type" content="website" />
-
-
-    <!-- Styles -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/variables.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
@@ -46,22 +44,22 @@ const {
 
   <body>
 
-    <!-- Global Background Particles -->
+    <!-- Background Particles -->
     <div id="particles"></div>
 
     <!-- Navigation -->
     <header>
-      <slot name="nav" />
+      <Navigation />
     </header>
 
-    <!-- Main Content -->
+    <!-- MAIN CONTENT -->
     <main class="page-wrapper">
       <slot />
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-      <slot name="footer" />
+      <Footer />
     </footer>
 
     <!-- Scripts -->

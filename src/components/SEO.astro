@@ -1,90 +1,67 @@
 ---
-/**
- * Global SEO component for Agence BonPapi
- * Supports: meta tags, OpenGraph, Twitter, Schema.org, Canonical URLs
- */
-
 const {
-  title = "Agence BonPapi – Design Premium, Branding, IA & Automatisation",
-  description = "Agence BonPapi offre du design premium, branding, sites web, IA et automatisations pour les marques ambitieuses.",
-  image = "/images/og/default.jpg",
-  url = Astro.url.href,
-  type = "website",
-  article = false,
-  date,
-  updated,
+  title = "Agence BonPapi — Agence Digitale Premium",
+  description = "Web design haut de gamme, branding immersif, IA, automatisation et solutions Cloudflare.",
+  image = "/images/placeholder.jpg",
+  url = Astro.url?.href || "https://agence.bonpapi.com",
 } = Astro.props;
 
-const siteName = "Agence BonPapi";
+// Ensure absolute URL for OG tags
+const absoluteImage = image.startsWith("http")
+  ? image
+  : new URL(image, url).href;
 ---
 
-<!-- Title & Description -->
+<!-- ============================ -->
+<!--         CORE SEO TAGS        -->
+<!-- ============================ -->
 <title>{title}</title>
 <meta name="description" content={description} />
+
+<!-- Canonical -->
 <link rel="canonical" href={url} />
 
-<!-- OpenGraph -->
+<!-- Charset & Language -->
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="fr" />
+
+<!-- ============================ -->
+<!--        OPEN GRAPH TAGS       -->
+<!-- ============================ -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Agence BonPapi" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
 <meta property="og:url" content={url} />
-<meta property="og:type" content={article ? "article" : type} />
-<meta property="og:site_name" content={siteName} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:image:secure_url" content={absoluteImage} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:locale" content="fr_FR" />
 
-<!-- Twitter -->
+<!-- ============================ -->
+<!--      TWITTER CARD TAGS       -->
+<!-- ============================ -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={image} />
+<meta name="twitter:image" content={absoluteImage} />
 
-<!-- Favicon -->
-<link rel="icon" href="/icons/star.svg" />
-
-<!-- Theme -->
-<meta name="theme-color" content="#0b0818" />
-<meta name="color-scheme" content="dark" />
-
-<!-- Schema.org (Organization + Website) -->
+<!-- ============================ -->
+<!--      STRUCTURED DATA         -->
+<!-- ============================ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Agence BonPapi",
-  "url": "https://agence.bonpapi.com",
-  "logo": "https://agence.bonpapi.com/images/placeholder.jpg",
+  "description": "{description}",
+  "url": "{url}",
+  "logo": "https://agence.bonpapi.com/icons/star.svg",
+  "image": "{absoluteImage}",
   "sameAs": [
-    "https://www.instagram.com/",
-    "https://www.facebook.com/"
+    "https://instagram.com/bonpapi",
+    "https://facebook.com/bonpapi",
+    "https://linkedin.com/company/bonpapi"
   ]
 }
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Agence BonPapi",
-  "url": "https://agence.bonpapi.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://agence.bonpapi.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-
-<!-- Article Schema (optional) -->
-{article && date && (
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "{title}",
-    "description": "{description}",
-    "datePublished": "{date}",
-    "dateModified": "{updated || date}",
-    "publisher": { "@type": "Organization", "name": "Agence BonPapi" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "{url}" }
-  }
-  </script>
-)}
