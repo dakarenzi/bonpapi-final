@@ -1,18 +1,23 @@
 ---
----
----
-const { title = "Agence BonPapi", description = "Agence digitale premium — Web, Branding, IA", image = "/images/og-default.jpg" } = Astro.props;
----
+import SEO from "../components/SEO.astro";
 
+const props = Astro.props || {};
+const {
+  title = "Agence BonPapi — Agence Digitale Premium",
+  description = "Web, Branding, IA et Automatisation — BonPapi",
+  image = "/images/og-default.jpg",
+} = props;
+---
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-  <SEO
-    title={title}
-    description={description}
-    image="/images/og/default.jpg"
-    url={Astro.url.href}
-  />
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      url={Astro.url.href}
+    />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -24,6 +29,7 @@ const { title = "Agence BonPapi", description = "Agence digitale premium — Web
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
+
 
     <!-- Styles -->
     <link rel="stylesheet" href="/styles/reset.css" />
