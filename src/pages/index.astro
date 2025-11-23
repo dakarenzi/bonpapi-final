@@ -1,0 +1,330 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+const title = "Agence BonPapi — L’Excellence Digitale : Web, Branding & IA";
+const description =
+  "Agence BonPapi crée des expériences digitales premium : sites web élégants, branding moderne, IA, automatisation et solutions Cloudflare pour marques ambitieuses.";
+
+// Data for dynamic sections
+import ServiceCard from "@components/ServiceCard.astro";
+import FeatureCard from "@components/FeatureCard.astro";
+import Stats from "@components/Stats.astro";
+import PortfolioGrid from "@components/PortfolioGrid.astro";
+import TestimonialCard from "@components/TestimonialCard.astro";
+import CTASection from "@components/CTASection.astro";
+
+const services = [
+  {
+    title: "Création de Sites Web",
+    description:
+      "Des interfaces élégantes, fluides et construites pour convertir.",
+    icon: "/icons/service-web.svg",
+  },
+  {
+    title: "Identité Visuelle",
+    description: "Branding, logos, chartes graphiques et direction artistique.",
+    icon: "/icons/service-brand.svg",
+  },
+  {
+    title: "Automatisation IA",
+    description:
+      "Workflows intelligents : WhatsApp, CRM, email, Cloudflare Workers.",
+    icon: "/icons/service-ai.svg",
+  },
+  {
+    title: "Développement sur Mesure",
+    description: "Applications web, SaaS, intégrations API avancées.",
+    icon: "/icons/service-dev.svg",
+  },
+  {
+    title: "E-commerce & Paiements",
+    description: "WooCommerce, Shopify, paiements mobiles et passerelles API.",
+    icon: "/icons/service-shop.svg",
+  },
+  {
+    title: "Marketing Digital",
+    description:
+      "Funnels, publicité Meta, analytics, optimisation de conversion.",
+    icon: "/icons/service-marketing.svg",
+  },
+];
+
+const features = [
+  {
+    title: "Approche Premium",
+    description: "Design raffiné, finitions soignées, impact maximal.",
+    icon: "/icons/diamond.svg",
+  },
+  {
+    title: "Ultra-Performance",
+    description:
+      "Sécurité, vitesse, SEO — propulsé par Astro & Cloudflare.",
+    icon: "/icons/rocket.svg",
+  },
+  {
+    title: "Technologies Modernes",
+    description:
+      "Stack moderne : Workers, IA, API, Edge computing & automatisation.",
+    icon: "/icons/stack.svg",
+  },
+  {
+    title: "Accompagnement Expert",
+    description:
+      "Du concept à la stratégie : un partenaire digital à long terme.",
+    icon: "/icons/support.svg",
+  },
+];
+
+const stats = [
+  { number: "120+", label: "Projets Livrés" },
+  { number: "48h", label: "Prototype moyen" },
+  { number: "98%", label: "Clients satisfaits" },
+  { number: "20+", label: "Secteurs couverts" },
+];
+
+const portfolio = [
+  {
+    image: "/images/portfolio-1.jpg",
+    title: "Site Corporate",
+    category: "Web Design",
+  },
+  {
+    image: "/images/portfolio-2.jpg",
+    title: "Brand Identity",
+    category: "Branding",
+  },
+  {
+    image: "/images/portfolio-3.jpg",
+    title: "E-commerce",
+    category: "Shop",
+  },
+  {
+    image: "/images/portfolio-4.jpg",
+    title: "Application Web",
+    category: "Développement",
+  },
+  {
+    image: "/images/portfolio-5.jpg",
+    title: "Automation Flow",
+    category: "IA & Workflow",
+  },
+  {
+    image: "/images/portfolio-6.jpg",
+    title: "Landing Page",
+    category: "Marketing",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Marie Diop",
+    role: "Fondatrice — Maison Eclipse",
+    quote:
+      "BonPapi a totalement transformé notre présence digitale. Une équipe réactive, un design exceptionnel.",
+    avatar: "/images/testimonial-1.jpg",
+  },
+  {
+    name: "Ahmed Ba",
+    role: "Directeur — TechNova",
+    quote:
+      "Leur rapidité et leur expertise sont impressionnantes. Du premium, du vrai.",
+    avatar: "/images/testimonial-2.jpg",
+  },
+  {
+    name: "Fatou Ndiaye",
+    role: "Entrepreneure",
+    quote:
+      "Le branding, le site, l’automatisation… Tout est devenu plus fluide et plus professionnel.",
+    avatar: "/images/testimonial-3.jpg",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <!-- ============================================================ -->
+  <!--                       CINEMATIC HERO                         -->
+  <!-- ============================================================ -->
+  <section class="hero-banner" data-sr>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-title shimmer-gold">
+          L’Agence Digitale Premium qui Donne Vie à Votre Vision.
+        </h1>
+        <p class="hero-subtitle">
+          Web design haut de gamme, branding immersif, automatisation IA et solutions Cloudflare — pour les marques qui veulent aller plus loin.
+        </p>
+        <a href="/contact" class="hero-btn">Commencer un projet</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="/images/hero/bonpapi-hero.jpg"
+          alt="Agence BonPapi Hero"
+          class="float-soft"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                         SERVICES                             -->
+  <!-- ============================================================ -->
+  <section class="services-section" data-sr>
+    <h2 class="section-title shimmer-gold">Nos Services</h2>
+    <div class="services-grid">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                        FEATURES                              -->
+  <!-- ============================================================ -->
+  <section class="features-section" data-sr>
+    <h2 class="section-title shimmer-gold">Pourquoi BonPapi ?</h2>
+    <div class="features-grid">
+      {features.map((f) => <FeatureCard {...f} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                           STATS                              -->
+  <!-- ============================================================ -->
+  <Stats stats={stats} />
+
+  <!-- ============================================================ -->
+  <!--                        PORTFOLIO                             -->
+  <!-- ============================================================ -->
+  <section class="portfolio-section" data-sr>
+    <h2 class="section-title shimmer-gold">Projets Récents</h2>
+    <PortfolioGrid items={portfolio} />
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                      TESTIMONIALS                            -->
+  <!-- ============================================================ -->
+  <section class="testimonials-section" data-sr>
+    <h2 class="section-title shimmer-gold">Ils nous font confiance</h2>
+    <div class="testimonials-grid">
+      {testimonials.map((t) => <TestimonialCard {...t} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                           CTA                                -->
+  <!-- ============================================================ -->
+  <CTASection
+    title="Prêt à faire briller votre marque ?"
+    subtitle="Transformons votre vision en une expérience digitale haut de gamme."
+    buttonLabel="Obtenir un devis"
+    buttonLink="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* =======================
+      CINEMATIC HERO
+  ======================== */
+  .hero-banner {
+    padding: 8rem 2rem;
+    background: linear-gradient(145deg, #0b0818 0%, #1a1330 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 2.5rem 0;
+    color: white;
+    max-width: 500px;
+    opacity: 0.85;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #0f0a1f;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  }
+
+  .hero-image img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0px 15px 35px rgba(255, 215, 0, 0.25);
+  }
+
+  /* =======================
+      GRID SECTIONS
+  ======================== */
+  .services-grid,
+  .features-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .testimonials-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .services-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+const title = "Politique de Confidentialité — Agence BonPapi";
+const description =
+  "Politique de confidentialité de l’Agence BonPapi : collecte, protection et utilisation des données personnelles.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <section class="legal-hero">
+    <h1 class="legal-title shimmer-gold">Politique de Confidentialité</h1>
+    <p class="legal-sub">
+      Notre engagement pour la protection de vos données personnelles.
+    </p>
+  </section>
+
+  <section class="legal-content">
+    <h2>1. Collecte des données</h2>
+    <p>
+      Nous collectons les informations fournies volontairement (nom, email,
+      téléphone, message, demandes de devis).
+    </p>
+
+    <h2>2. Utilisation des données</h2>
+    <p>Les données sont utilisées pour :</p>
+    <ul>
+      <li>Répondre aux demandes de contact</li>
+      <li>Établir des devis et propositions commerciales</li>
+      <li>Assurer le suivi client</li>
+      <li>Envoyer des communications (sur consentement)</li>
+    </ul>
+
+    <h2>3. Conservation</h2>
+    <p>
+      Les données sont conservées uniquement pour la durée strictement
+      nécessaire à leur traitement.
+    </p>
+
+    <h2>4. Partage des données</h2>
+    <p>
+      Agence BonPapi ne revend ni ne partage aucune donnée personnelle avec des
+      tiers, sauf obligation légale.
+    </p>
+
+    <h2>5. Sécurité</h2>
+    <p>
+      Les données sont protégées via des mesures techniques modernes (Cloudflare
+      sécurité, chiffrement, accès restreint).
+    </p>
+
+    <h2>6. Droits des utilisateurs</h2>
+    <p>Vous disposez des droits suivants :</p>
+    <ul>
+      <li>Droit d’accès</li>
+      <li>Droit de rectification</li>
+      <li>Droit de suppression</li>
+      <li>Droit d’opposition</li>
+      <li>Droit de portabilité</li>
+    </ul>
+
+    <p>
+      Pour exercer ces droits :  
+      <a href="mailto:contact@bonpapi.com">contact@bonpapi.com</a>
+    </p>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+  }
+
+  .legal-title {
+    font-size: 2.4rem;
+    color: var(--gold);
+  }
+
+  .legal-sub {
+    color: white;
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+
+  .legal-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    color: white;
+  }
+
+  .legal-content h2 {
+    color: var(--gold);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .legal-content p,
+  .legal-content li {
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul {
+    margin-left: 1rem;
+  }
+
+  .legal-content a {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+</style>

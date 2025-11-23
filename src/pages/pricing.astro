@@ -1,0 +1,222 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+import CTASection from "@components/CTASection.astro";
+
+const title = "Tarifs — Agence BonPapi";
+const description =
+  "Découvrez nos offres premium en web design, branding, IA, développement et automatisation. Tarifs transparents pour marques ambitieuses.";
+
+const plans = [
+  {
+    name: "Starter",
+    price: "250 000 FCFA",
+    period: "/ projet",
+    highlight: false,
+    features: [
+      "Site vitrine 1–3 pages",
+      "Design élégant & responsive",
+      "SEO de base",
+      "Livraison rapide (72h)",
+      "Support 7j/7"
+    ]
+  },
+  {
+    name: "Business",
+    price: "450 000 FCFA",
+    period: "/ projet",
+    highlight: true,
+    features: [
+      "Site professionnel 5–10 pages",
+      "Branding visuel inclus",
+      "Optimisation SEO complète",
+      "Automatisations essentielles",
+      "Accompagnement stratégique"
+    ]
+  },
+  {
+    name: "Prestige",
+    price: "1 200 000 FCFA",
+    period: "/ projet",
+    highlight: false,
+    features: [
+      "Expérience web premium personnalisée",
+      "Identité visuelle sur mesure",
+      "Animations avancées",
+      "Automatisations IA & workflows",
+      "Suivi et optimisation 30 jours"
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <!-- ============================================================ -->
+  <!--                        HERO SECTION                          -->
+  <!-- ============================================================ -->
+  <section class="pricing-hero" data-sr>
+    <h1 class="hero-title shimmer-gold">Nos Tarifs</h1>
+    <p class="hero-subtitle">
+      Des offres adaptées à chaque niveau d’ambition — du lancement rapide aux projets haut de gamme.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                       PRICING GRID                           -->
+  <!-- ============================================================ -->
+  <section class="pricing-section" data-sr>
+    <div class="pricing-grid">
+      {plans.map(plan => (
+        <div class={`pricing-card ${plan.highlight ? "highlight" : ""}`}>
+          <h3 class="plan-name">{plan.name}</h3>
+
+          <div class="plan-price">
+            <span class="price">{plan.price}</span>
+            <span class="period">{plan.period}</span>
+          </div>
+
+          <ul class="features">
+            {plan.features.map(f => <li>{f}</li>)}
+          </ul>
+
+          <a href="/contact" class="plan-btn">Commencer</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                            CTA                               -->
+  <!-- ============================================================ -->
+  <CTASection
+    title="Un projet en tête ?"
+    subtitle="Parlons de votre vision et construisons un résultat exceptionnel."
+    buttonLabel="Demander un devis"
+    buttonLink="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* =======================
+      HERO
+  ======================== */
+  .pricing-hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    color: white;
+    opacity: 0.85;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  /* =======================
+      PRICING GRID
+  ======================== */
+  .pricing-section {
+    padding: 4rem 2rem;
+  }
+
+  .pricing-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pricing-card {
+    background: #0f0a1f;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.25);
+  }
+
+  .pricing-card.highlight {
+    border: 2px solid var(--gold);
+    background: linear-gradient(160deg, #1a1330, #0f0a1f);
+    transform: scale(1.03);
+  }
+
+  .plan-name {
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .plan-price {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .period {
+    display: block;
+    margin-top: 4px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .features {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .features li {
+    margin: 0.6rem 0;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 0.9rem 1.5rem;
+    background: var(--gold);
+    color: #0f0a1f;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .plan-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+  }
+
+  @media (max-width: 900px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+{
+    "name": "agence-bonpapi",
+    "type": "module",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "dev": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview",
+      "deploy": "wrangler pages deploy ./dist"
+    },
+    "dependencies": {
+      "@astrojs/cloudflare": "^9.0.0",
+      "@astrojs/sitemap": "^3.1.4",
+      "astro": "^4.5.0",
+      "gsap": "^3.12.5",
+      "scrollreveal": "^4.0.9"
+    }
+  }
+  

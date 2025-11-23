@@ -1,0 +1,100 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  icon?: string; // optional icon path (SVG)
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<style>
+  .service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.18);
+    padding: 2.2rem 1.8rem;
+    border-radius: 16px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gold shimmer sweep */
+  .service-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 215, 0, 0.18),
+      transparent
+    );
+    transform: rotate(25deg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .service-card:hover::after {
+    opacity: 1;
+    animation: shineSweep 1.2s linear;
+  }
+
+  @keyframes shineSweep {
+    0% { transform: translateX(-150%) rotate(25deg); }
+    100% { transform: translateX(150%) rotate(25deg); }
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.35);
+    box-shadow: 0 8px 26px rgba(255, 215, 0, 0.25);
+  }
+
+  .icon-box {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+  }
+
+  .icon-box img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0px 0px 4px rgba(255, 215, 0, 0.5));
+  }
+
+  .service-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.55;
+  }
+</style>
+
+<div class="service-card" data-sr>
+  {icon && (
+    <div class="icon-box shimmer-gold">
+      <img src={icon} alt="Icone service" />
+    </div>
+  )}
+
+  <h3 class="service-title">{title}</h3>
+  <p class="service-desc">{description}</p>
+</div>

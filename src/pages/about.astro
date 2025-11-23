@@ -1,0 +1,186 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+import FeatureCard from "@components/FeatureCard.astro";
+import CTASection from "@components/CTASection.astro";
+
+const title = "À propos — Agence BonPapi";
+const description =
+  "Découvrez l’histoire, la mission et la vision de l’Agence BonPapi — une agence digitale premium en web design, branding, IA et développement Cloudflare.";
+
+const values = [
+  {
+    title: "Excellence",
+    description: "Chaque projet est une pièce unique : précision, qualité et souci du détail.",
+    icon: "/icons/diamond.svg",
+  },
+  {
+    title: "Innovation",
+    description: "IA, Cloudflare, automatisation, design moderne — nous restons en avance.",
+    icon: "/icons/rocket.svg",
+  },
+  {
+    title: "Accompagnement",
+    description: "Nous avançons avec vous : stratégie, conseils, optimisation continue.",
+    icon: "/icons/support.svg",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <!-- ============================================================ -->
+  <!--                       HERO SECTION                           -->
+  <!-- ============================================================ -->
+  <section class="about-hero" data-sr>
+    <div class="hero-content">
+      <h1 class="hero-title shimmer-gold">À propos de BonPapi</h1>
+      <p class="hero-subtitle">
+        Une agence digitale premium dédiée à la création d’expériences web élégantes,
+        modernes et propulsées par la technologie.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                      OUR STORY SECTION                       -->
+  <!-- ============================================================ -->
+  <section class="story-section" data-sr>
+    <div class="story-inner">
+      <div class="story-text">
+        <h2 class="section-title shimmer-gold">Notre Histoire</h2>
+        <p>
+          Agence BonPapi est née d’une mission simple : offrir aux entreprises
+          une présence digitale digne de leur ambition. Dans un monde où
+          l’attention est précieuse, la qualité visuelle et la performance
+          sont devenues essentielles.
+        </p>
+        <p>
+          Avec une approche centrée sur l’excellence, nous avons développé
+          un savoir-faire unique en web design, branding, IA, automatisation
+          et développement Cloudflare. Chaque projet est pensé comme une
+          expérience premium — élégante, rapide, impactante.
+        </p>
+      </div>
+
+      <div class="story-image" data-sr>
+        <img src="/images/about/team.jpg" alt="Équipe BonPapi" class="float-soft" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                      VALUES SECTION                          -->
+  <!-- ============================================================ -->
+  <section class="values-section" data-sr>
+    <h2 class="section-title shimmer-gold">Nos valeurs</h2>
+    <div class="values-grid">
+      {values.map(v => <FeatureCard {...v} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                          CTA                                 -->
+  <!-- ============================================================ -->
+  <CTASection
+    title="Travaillons ensemble"
+    subtitle="Construisons une expérience digitale élégante et performante."
+    buttonLabel="Contactez-nous"
+    buttonLink="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* =======================
+      HERO SECTION
+  ======================== */
+  .about-hero {
+    padding: 6rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+    color: white;
+    opacity: 0.85;
+  }
+
+  /* =======================
+      STORY SECTION
+  ======================== */
+  .story-section {
+    padding: 4rem 2rem;
+  }
+
+  .story-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .story-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: white;
+    opacity: 0.9;
+  }
+
+  .story-image img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0px 15px 35px rgba(255, 215, 0, 0.25);
+  }
+
+  /* =======================
+      VALUES SECTION
+  ======================== */
+  .values-section {
+    padding: 4rem 2rem;
+  }
+
+  .values-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    .story-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

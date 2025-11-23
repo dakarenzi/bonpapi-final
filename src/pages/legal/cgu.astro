@@ -1,0 +1,121 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+const title = "Conditions Générales d’Utilisation — Agence BonPapi";
+const description =
+  "Conditions générales d’utilisation du site de l’Agence BonPapi. Informations utilisateurs, responsabilités et fonctionnement du service.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <section class="legal-hero">
+    <h1 class="legal-title shimmer-gold">Conditions Générales d’Utilisation</h1>
+    <p class="legal-sub">
+      Les présentes conditions encadrent l’utilisation du site Agence BonPapi.
+    </p>
+  </section>
+
+  <section class="legal-content">
+    <h2>1. Objet</h2>
+    <p>
+      Les présentes Conditions Générales d’Utilisation (ci-après « CGU ») ont
+      pour objet de définir les modalités d’accès et d’utilisation du site
+      <strong>agence.bonpapi.com</strong>.
+    </p>
+
+    <h2>2. Présentation du site</h2>
+    <p>
+      Agence BonPapi est une agence digitale premium spécialisée dans la création de sites,
+      branding, automatisation IA, solutions Cloudflare Workers et accompagnement
+      marketing.
+    </p>
+
+    <h2>3. Accès au site</h2>
+    <p>
+      L’accès au site est possible 24h/24 et 7j/7, sauf interruption pour
+      maintenance ou en cas de force majeure. L’Agence BonPapi ne saurait être tenue
+      responsable de toute indisponibilité.
+    </p>
+
+    <h2>4. Propriété intellectuelle</h2>
+    <p>
+      L’ensemble des contenus (textes, images, vidéos, logos, illustrations,
+      maquettes, code) est protégé par le droit d’auteur.
+      <br />Toute reproduction, représentation ou exploitation sans autorisation est interdite.
+    </p>
+
+    <h2>5. Responsabilité</h2>
+    <p>
+      L’utilisateur s’engage à utiliser le site de manière conforme. Agence BonPapi ne
+      peut être tenue responsable de l’usage frauduleux ou incorrect fait du site ou
+      de ses contenus.
+    </p>
+
+    <h2>6. Données personnelles</h2>
+    <p>
+      Les données collectées via les formulaires (contact, devis, newsletter)
+      sont traitées conformément à notre
+      <a href="/legal/politique-de-confidentialite">Politique de Confidentialité</a>.
+    </p>
+
+    <h2>7. Modifications des CGU</h2>
+    <p>
+      L’Agence BonPapi se réserve le droit de modifier les présentes CGU à tout
+      moment. La date de mise à jour fait foi.
+    </p>
+
+    <h2>8. Loi applicable</h2>
+    <p>
+      Les présentes CGU sont soumises à la législation en vigueur au Sénégal.
+    </p>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+  }
+
+  .legal-title {
+    font-size: 2.4rem;
+    color: var(--gold);
+  }
+
+  .legal-sub {
+    color: white;
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+
+  .legal-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    color: white;
+  }
+
+  .legal-content h2 {
+    color: var(--gold);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .legal-content p {
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content a {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+</style>

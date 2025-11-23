@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+const title = "Mentions Légales — Agence BonPapi";
+const description =
+  "Mentions légales officielles du site Agence BonPapi : éditeur, hébergement, responsabilité, propriété intellectuelle.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <section class="legal-hero">
+    <h1 class="legal-title shimmer-gold">Mentions Légales</h1>
+    <p class="legal-sub">Informations légales et réglementaires du site.</p>
+  </section>
+
+  <section class="legal-content">
+    <h2>1. Éditeur du site</h2>
+    <p>
+      Le site <strong>agence.bonpapi.com</strong> est édité par :
+      <br /><strong>BonPapi</strong>
+      <br />Dakar, Sénégal
+      <br />Email : contact@bonpapi.com
+    </p>
+
+    <h2>2. Directeur de la publication</h2>
+    <p><strong>Dakar Azu</strong>, Fondateur.</p>
+
+    <h2>3. Hébergement</h2>
+    <p>
+      Hébergement et infrastructure :
+      <br /><strong>Cloudflare, Inc.</strong>
+      <br />San Francisco, Californie, USA.
+    </p>
+
+    <h2>4. Propriété intellectuelle</h2>
+    <p>
+      L’ensemble des éléments du site (textes, images, vidéos, code source,
+      animations, visuels, designs, maquettes) sont la propriété exclusive de
+      l’Agence BonPapi.
+    </p>
+
+    <h2>5. Responsabilité</h2>
+    <p>
+      L’éditeur ne peut garantir l’exactitude des informations diffusées.
+      L'utilisateur reconnaît utiliser le site sous sa responsabilité exclusive.
+    </p>
+
+    <h2>6. Liens externes</h2>
+    <p>
+      Le site peut contenir des liens vers des sites tiers. Agence BonPapi n’est pas
+      responsable du contenu de ces sites.
+    </p>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+  }
+
+  .legal-title {
+    font-size: 2.4rem;
+    color: var(--gold);
+  }
+
+  .legal-sub {
+    color: white;
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+
+  .legal-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    color: white;
+  }
+
+  .legal-content h2 {
+    color: var(--gold);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .legal-content p {
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+</style>

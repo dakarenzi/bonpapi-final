@@ -1,0 +1,68 @@
+---
+---
+---
+const { title = "Agence BonPapi", description = "Agence digitale premium — Web, Branding, IA", image = "/images/og-default.jpg" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+  <SEO
+    title={title}
+    description={description}
+    image="/images/og/default.jpg"
+    url={Astro.url.href}
+  />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/components.css" />
+    <link rel="stylesheet" href="/styles/animations/float.css" />
+    <link rel="stylesheet" href="/styles/animations/shimmer.css" />
+    <link rel="stylesheet" href="/styles/animations/shineSweep.css" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/icons/star.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+
+    <!-- Global Background Particles -->
+    <div id="particles"></div>
+
+    <!-- Navigation -->
+    <header>
+      <slot name="nav" />
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <slot name="footer" />
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/scripts/scrollReveal.js"></script>
+    <script type="module" src="/scripts/particles.js"></script>
+    <script type="module" src="/scripts/pageTransitions.js"></script>
+    <script type="module" src="/scripts/gsapAnimations.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,115 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  buttonLabel?: string;
+  buttonLink?: string;
+}
+
+const {
+  title,
+  subtitle = "Accélérez votre transformation digitale avec une agence premium.",
+  buttonLabel = "Discutons de votre projet",
+  buttonLink = "/contact",
+} = Astro.props;
+---
+
+<style>
+  .cta-section {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 10, 31, 0.95),
+      rgba(20, 14, 40, 0.85)
+    );
+    border-top: 1px solid rgba(255, 215, 0, 0.18);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.18);
+  }
+
+  /* Gold decorative sweeping light */
+  .cta-section::before {
+    content: "";
+    position: absolute;
+    top: -80%;
+    left: -120%;
+    width: 250%;
+    height: 250%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 215, 0, 0.18),
+      transparent 70%
+    );
+    animation: goldOrb 14s linear infinite;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  @keyframes goldOrb {
+    0% { transform: translate(-20%, -20%) rotate(0deg); }
+    50% { transform: translate(20%, 10%) rotate(180deg); }
+    100% { transform: translate(-20%, -20%) rotate(360deg); }
+  }
+
+  .cta-container {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.4px;
+    line-height: 1.25;
+  }
+
+  .cta-subtitle {
+    font-size: 1.05rem;
+    color: white;
+    opacity: 0.85;
+    margin-bottom: 2.4rem;
+    line-height: 1.6;
+  }
+
+  /* CTA Button */
+  .cta-button {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    color: #0f0a1f;
+    background: var(--gold);
+    letter-spacing: 0.4px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 6px 16px rgba(255, 215, 0, 0.32);
+  }
+
+  @media (max-width: 700px) {
+    .cta-title {
+      font-size: 1.7rem;
+    }
+  }
+</style>
+
+<section class="cta-section" data-sr>
+  <div class="cta-container">
+    <h2 class="cta-title shimmer-gold">{title}</h2>
+    <p class="cta-subtitle">{subtitle}</p>
+
+    <a class="cta-button" href={buttonLink}>
+      {buttonLabel}
+    </a>
+  </div>
+</section>

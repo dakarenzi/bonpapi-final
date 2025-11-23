@@ -1,0 +1,97 @@
+---
+export interface StatItem {
+  number: string;
+  label: string;
+}
+
+export interface Props {
+  stats: StatItem[];
+}
+
+const { stats } = Astro.props;
+---
+
+<style>
+  .stats-section {
+    width: 100%;
+    padding: 4rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 215, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(6px);
+  }
+
+  .stats-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Stat Card */
+  .stat-card {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    transition: transform 0.35s ease, color 0.35s ease;
+    cursor: default;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Number */
+  .stat-number {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+
+    /* Gold shimmer animation */
+    background: linear-gradient(90deg, var(--gold), #fff4b0, var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: goldTextFlow 3s linear infinite;
+  }
+
+  @keyframes goldTextFlow {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+  }
+
+  /* Label */
+  .stat-label {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    color: white;
+    opacity: 0.85;
+    letter-spacing: 0.3px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="stats-section" data-sr>
+  <div class="stats-grid">
+    {stats.map((item) => (
+      <div class="stat-card shimmer-gold">
+        <div class="stat-number">{item.number}</div>
+        <div class="stat-label">{item.label}</div>
+      </div>
+    ))}
+  </div>
+</section>

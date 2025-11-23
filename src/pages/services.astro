@@ -1,0 +1,182 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+import ServiceCard from "@components/ServiceCard.astro";
+import FeatureCard from "@components/FeatureCard.astro";
+import CTASection from "@components/CTASection.astro";
+
+const title = "Nos Services — Agence BonPapi";
+const description =
+  "Découvrez les services premium de l’Agence BonPapi : création de sites web, branding, automatisation IA, développement sur mesure et optimisation digitale.";
+
+const services = [
+  {
+    title: "Création de Sites Web",
+    description:
+      "Des sites web modernes, rapides, responsives et optimisés pour la conversion, construits avec Astro, React et Cloudflare.",
+    icon: "/icons/service-web.svg",
+  },
+  {
+    title: "Identité Visuelle & Branding",
+    description:
+      "Création d'identités visuelles fortes : logos, chartes graphiques, univers visuel et direction artistique.",
+    icon: "/icons/service-brand.svg",
+  },
+  {
+    title: "Automatisation & IA",
+    description:
+      "Automations WhatsApp, workflows n8n, chatbots intelligents, CRM, API et agents IA pour booster votre efficacité.",
+    icon: "/icons/service-ai.svg",
+  },
+  {
+    title: "Développement sur Mesure",
+    description:
+      "Applications web, portails clients, dashboards, SaaS, intégrations API avancées, Workers Cloudflare.",
+    icon: "/icons/service-dev.svg",
+  },
+  {
+    title: "E-commerce & Paiements",
+    description:
+      "Boutiques WooCommerce & Shopify, intégration de paiements mobiles, passerelles API sur mesure.",
+    icon: "/icons/service-shop.svg",
+  },
+  {
+    title: "Marketing & Croissance",
+    description:
+      "Stratégie digitale, funnels, Meta Ads, Google Ads, SEO, copywriting persuasif et optimisation analytique.",
+    icon: "/icons/service-marketing.svg",
+  },
+];
+
+const features = [
+  {
+    title: "Méthodologie Premium",
+    description:
+      "Chaque projet suit une approche haut de gamme : audit, stratégie, design, développement et suivi.",
+    icon: "/icons/diamond.svg",
+  },
+  {
+    title: "Technologies Modernes",
+    description:
+      "Astro, Cloudflare, API, Workers, IA — nous construisons avec les outils des meilleures agences mondiales.",
+    icon: "/icons/stack.svg",
+  },
+  {
+    title: "Accompagnement Continu",
+    description:
+      "Nous restons disponibles pour faire évoluer votre projet, optimiser vos performances et vous assister.",
+    icon: "/icons/support.svg",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <!-- ============================================================ -->
+  <!--                       HERO SECTION                           -->
+  <!-- ============================================================ -->
+  <section class="services-hero" data-sr>
+    <div class="hero-content">
+      <h1 class="hero-title shimmer-gold">Nos Services</h1>
+      <p class="hero-subtitle">
+        Des solutions digitales premium pensées pour les marques ambitieuses :
+        sites web, branding, IA, automatisation et développement sur mesure.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                         SERVICES GRID                        -->
+  <!-- ============================================================ -->
+  <section class="services-section" data-sr>
+    <h2 class="section-title shimmer-gold">Ce que nous faisons</h2>
+    <div class="services-grid">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                      FEATURE SECTION                         -->
+  <!-- ============================================================ -->
+  <section class="features-section" data-sr>
+    <h2 class="section-title shimmer-gold">Notre approche</h2>
+    <div class="features-grid">
+      {features.map((f) => <FeatureCard {...f} />)}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                            CTA                                -->
+  <!-- ============================================================ -->
+  <CTASection
+    title="Vous avez un projet ?"
+    subtitle="Discutons de votre vision et transformons-la en une expérience digitale premium."
+    buttonLabel="Demander un devis"
+    buttonLink="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* =======================
+      HERO SECTION
+  ======================== */
+  .services-hero {
+    padding: 6rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+    color: white;
+    opacity: 0.85;
+  }
+
+  /* =======================
+      GRID SECTIONS
+  ======================== */
+  .services-grid,
+  .features-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    .services-grid,
+    .features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .hero-title {
+      font-size: 2.4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid,
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

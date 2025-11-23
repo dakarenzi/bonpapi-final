@@ -1,0 +1,129 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+
+import PortfolioGrid from "@components/PortfolioGrid.astro";
+import CTASection from "@components/CTASection.astro";
+
+const title = "Portfolio — Agence BonPapi";
+const description =
+  "Découvrez les projets premium réalisés par l’Agence BonPapi : sites web, branding, automatisation IA, e-commerce et développement moderne.";
+
+// Portfolio items
+const projects = [
+  {
+    image: "/images/portfolio-1.jpg",
+    title: "Site Corporate",
+    category: "Web Design",
+  },
+  {
+    image: "/images/portfolio-2.jpg",
+    title: "Identité Visuelle Luxe",
+    category: "Branding",
+  },
+  {
+    image: "/images/portfolio-3.jpg",
+    title: "Boutique E-commerce",
+    category: "Shop",
+  },
+  {
+    image: "/images/portfolio-4.jpg",
+    title: "Application Web",
+    category: "Développement",
+  },
+  {
+    image: "/images/portfolio-5.jpg",
+    title: "Automatisation IA",
+    category: "IA & Workflow",
+  },
+  {
+    image: "/images/portfolio-6.jpg",
+    title: "Landing Page Marketing",
+    category: "Marketing",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation slot="nav" />
+
+  <!-- ============================================================ -->
+  <!--                       HERO SECTION                           -->
+  <!-- ============================================================ -->
+  <section class="portfolio-hero" data-sr>
+    <div class="hero-content">
+      <h1 class="hero-title shimmer-gold">Portfolio</h1>
+      <p class="hero-subtitle">
+        Une sélection de projets réalisés pour des clients qui recherchent
+        l’excellence digitale. Web design, branding, IA, e-commerce et solutions
+        sur mesure.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                        PORTFOLIO GRID                        -->
+  <!-- ============================================================ -->
+  <section class="portfolio-section" data-sr>
+    <h2 class="section-title shimmer-gold">Nos Réalisations</h2>
+    <PortfolioGrid items={projects} />
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                            CTA                                -->
+  <!-- ============================================================ -->
+  <CTASection
+    title="Votre projet mérite un rendu premium."
+    subtitle="Créons ensemble une expérience digitale à la hauteur de votre marque."
+    buttonLabel="Commencer un projet"
+    buttonLink="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* =======================
+      HERO SECTION
+  ======================== */
+  .portfolio-hero {
+    padding: 6rem 2rem;
+    background: linear-gradient(145deg, #0b0818, #1a1330);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: auto;
+    color: white;
+    opacity: 0.85;
+  }
+
+  /* =======================
+      PORTFOLIO SECTION
+  ======================== */
+  .portfolio-section {
+    margin-top: 3rem;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 800px) {
+    .hero-title {
+      font-size: 2.4rem;
+    }
+  }
+</style>

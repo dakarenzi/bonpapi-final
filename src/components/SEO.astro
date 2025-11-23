@@ -1,0 +1,90 @@
+---
+/**
+ * Global SEO component for Agence BonPapi
+ * Supports: meta tags, OpenGraph, Twitter, Schema.org, Canonical URLs
+ */
+
+const {
+  title = "Agence BonPapi – Design Premium, Branding, IA & Automatisation",
+  description = "Agence BonPapi offre du design premium, branding, sites web, IA et automatisations pour les marques ambitieuses.",
+  image = "/images/og/default.jpg",
+  url = Astro.url.href,
+  type = "website",
+  article = false,
+  date,
+  updated,
+} = Astro.props;
+
+const siteName = "Agence BonPapi";
+---
+
+<!-- Title & Description -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+
+<!-- OpenGraph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:url" content={url} />
+<meta property="og:type" content={article ? "article" : type} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- Favicon -->
+<link rel="icon" href="/icons/star.svg" />
+
+<!-- Theme -->
+<meta name="theme-color" content="#0b0818" />
+<meta name="color-scheme" content="dark" />
+
+<!-- Schema.org (Organization + Website) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Agence BonPapi",
+  "url": "https://agence.bonpapi.com",
+  "logo": "https://agence.bonpapi.com/images/placeholder.jpg",
+  "sameAs": [
+    "https://www.instagram.com/",
+    "https://www.facebook.com/"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Agence BonPapi",
+  "url": "https://agence.bonpapi.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://agence.bonpapi.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Article Schema (optional) -->
+{article && date && (
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{title}",
+    "description": "{description}",
+    "datePublished": "{date}",
+    "dateModified": "{updated || date}",
+    "publisher": { "@type": "Organization", "name": "Agence BonPapi" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{url}" }
+  }
+  </script>
+)}

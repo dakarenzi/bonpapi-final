@@ -1,0 +1,184 @@
+---
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/services", label: "Services" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/about", label: "À propos" },
+  { href: "/pricing", label: "Tarifs" },
+  { href: "/contact", label: "Contact" },
+];
+
+const socialLinks = [
+  { href: "https://facebook.com", icon: "/icons/facebook.svg", alt: "Facebook" },
+  { href: "https://instagram.com", icon: "/icons/instagram.svg", alt: "Instagram" },
+  { href: "https://linkedin.com", icon: "/icons/linkedin.svg", alt: "LinkedIn" },
+];
+---
+
+<style>
+  footer {
+    background: #0f0a1f; /* deep velvet */
+    padding: 4rem 1.5rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    color: white;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .footer-col h3 {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Logo Style */
+  .footer-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  /* Text */
+  .footer-col p {
+    opacity: 0.8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Quick Links */
+  .quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .quick-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    position: relative;
+    padding-bottom: 3px;
+  }
+
+  /* Gold underline hover */
+  .quick-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+
+  .quick-links a:hover::after {
+    width: 100%;
+  }
+
+  .quick-links a:hover {
+    color: var(--gold);
+  }
+
+  /* Social Icons */
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-icons img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .social-icons img:hover {
+    opacity: 1;
+    transform: scale(1.12);
+    filter: drop-shadow(0px 0px 4px rgba(255, 215, 0, 0.6));
+  }
+
+  /* Bottom Bar */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+
+  @media(max-width: 900px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
+  }
+</style>
+
+<footer>
+
+  <div class="footer-container">
+
+    <!-- Column 1: Branding -->
+    <div class="footer-col">
+      <div class="footer-logo shimmer-gold">Agence BonPapi</div>
+      <p>
+        Agence digitale premium spécialisée en création de sites web, branding,
+        automatisation IA et solutions innovantes pour entreprises ambitieuses.
+      </p>
+      <div class="social-icons">
+        {socialLinks.map(s => (
+          <a href={s.href} target="_blank">
+            <img src={s.icon} alt={s.alt} />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col">
+      <h3>Navigation</h3>
+      <div class="quick-links">
+        {quickLinks.map(link => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Column 3: Contact -->
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>Email : contact@bonpapi.com</p>
+      <p>Téléphone : +221 78 11 67 663</p>
+      <p>Dakar, Sénégal</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © {year} Agence BonPapi — Tous droits réservés.
+  </div>
+
+</footer>

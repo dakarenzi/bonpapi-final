@@ -1,0 +1,128 @@
+---
+export interface Props {
+  name: string;
+  role?: string;
+  quote: string;
+  avatar?: string;
+  rating?: number; // 1–5
+}
+
+const { name, role = "", quote, avatar = "/images/avatar-default.png", rating = 5 } = Astro.props;
+---
+
+<style>
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.18);
+    padding: 2rem 1.7rem;
+    border-radius: 18px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(255, 215, 0, 0.22);
+    border-color: rgba(255, 215, 0, 0.35);
+  }
+
+  /* Gold shimmer sweep */
+  .testimonial-card::after {
+    content: "";
+    position: absolute;
+    top: -65%;
+    left: -80%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 215, 0, 0.15),
+      transparent
+    );
+    transform: rotate(25deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .testimonial-card:hover::after {
+    opacity: 1;
+    animation: shineSweep 1.4s linear;
+  }
+
+  @keyframes shineSweep {
+    0% { transform: translateX(-70%) rotate(25deg); }
+    100% { transform: translateX(70%) rotate(25deg); }
+  }
+
+  /* Avatar */
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid rgba(255, 215, 0, 0.35);
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+  }
+
+  /* Name */
+  .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .role {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  /* Quote */
+  .quote {
+    font-size: 1rem;
+    color: white;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+  }
+
+  /* Rating Stars */
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .star {
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0px 0px 4px rgba(255, 215, 0, 0.4));
+  }
+</style>
+
+<div class="testimonial-card" data-sr>
+
+  <!-- Avatar -->
+  <img class="avatar" src={avatar} alt={name} />
+
+  <!-- Name & Role -->
+  <div class="name shimmer-gold">{name}</div>
+  {role && <div class="role">{role}</div>}
+
+  <!-- Quote -->
+  <p class="quote">“{quote}”</p>
+
+  <!-- Rating Stars -->
+  <div class="stars">
+    {Array.from({ length: rating }).map(() => (
+      <img class="star" src="/icons/star-gold.svg" alt="⭐" />
+    ))}
+  </div>
+</div>

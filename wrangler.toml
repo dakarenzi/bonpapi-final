@@ -1,0 +1,12 @@
+name = "agence-bonpapi"
+compatibility_date = "2024-04-03"
+
+[site]
+bucket = "./dist"
+entry-point = "."
+
+[vars]
+NODE_VERSION = "18"
+
+[build]
+command = "npm run build"
